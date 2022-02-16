@@ -1,12 +1,12 @@
 import { View, Text, TextInput, StyleSheet, Pressable, TouchableOpacity, Alert } from 'react-native'
-import {firebase} from '../../firebase'
-import React, {useState} from 'react'
+import firebase from '../../firebase'
+import React from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import Validator from 'email-validator'
 
-
-const LoginForm = ({navigation}) => {
+ 
+const LoginForm = ({ navigation }) => {
     const LoginFormSchema =  Yup.object().shape({
         email: Yup.string().email().required('An email is required'),
         password: Yup.string()
@@ -18,7 +18,7 @@ const LoginForm = ({navigation}) => {
         try {
           await firebase.auth().signInWithEmailAndPassword(email, password)
           console.log('firebase Login Successful', email, password)  
-        } catch(error) {
+        } catch (error) {
             Alert.alert(error.message)
         }
     }
