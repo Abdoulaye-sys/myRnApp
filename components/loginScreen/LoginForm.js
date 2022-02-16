@@ -19,7 +19,23 @@ const LoginForm = ({ navigation }) => {
           await firebase.auth().signInWithEmailAndPassword(email, password)
           console.log('firebase Login Successful', email, password)  
         } catch (error) {
-            Alert.alert(error.message)
+            Alert.alert(
+                'Oups ...',
+                error.message + '\n\n ... What would you like to do next ?'
+                [
+                    {
+                        text : 'OK',
+                        onPress: () => console.log('OK'),
+                        style: 'cancel',
+                    },
+                    
+                    {
+                        text: 'Sign Up', 
+                        onPress: () => navigation.push('SignupScreen'),
+                    }
+
+                ]
+            )
         }
     }
 
