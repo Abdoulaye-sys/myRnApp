@@ -3,7 +3,8 @@ import React, {useState} from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import Validator from 'email-validator'
-import {firebase} from '../../firebase'
+import firebase from '../../firebase'
+import db from '../../firebase'
 
 const SignupForm = ({navigation})  =>  {
 
@@ -35,7 +36,7 @@ const SignupForm = ({navigation})  =>  {
                     profile_picture: await getRandomProfilePicture(),
                 })
 
-            } catch (error) {
+            } catch(error) {
             Alert.alert( 'oups ..', error.message)
         }
     }
